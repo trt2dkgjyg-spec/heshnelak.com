@@ -1,590 +1,439 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
   <meta charset="UTF-8">
-  <meta name="google-site-verification" content="clVUwvShKTQMrWsrrXAW3618ICbduk_dvUqLJ3Na6Ok" />
-  <title>مقارنة شركات الشحن في مصر 2026 </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="cIVUwvShKTQMrWsrrXAW36l8ICbduk_dvUqLJ3Na6Ok" />
+  <title>هشحنلك — مقارنة شركات الشحن في مصر 2026</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+  
   <style>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --gold: #F5A623;
       --dark: #0D0D1A;
       --card: #13132A;
-      --border: rgba(245, 166, 35, 0.2);
+      --border: rgba(245,166,35,0.2);
       --text: #E8E8F0;
       --muted: #8888AA;
       --green: #00C896;
       --red: #FF5A5A;
     }
+    body { font-family: 'Cairo', sans-serif; background: var(--dark); color: var(--text); min-height: 100vh; direction: rtl; }
 
-    body {
-      font-family: 'Cairo', sans-serif;
-      background: var(--dark);
-      color: var(--text);
-      min-height: 100vh;
-      direction: rtl;
-    }
-
-    /* HERO */
+    /* ===== VIDEO HERO ===== */
     .hero {
-      background: linear-gradient(135deg, #0D0D1A 0%, #1A0D2E 50%, #0D1A1A 100%);
-      padding: 60px 20px 40px;
-      text-align: center;
-      border-bottom: 1px solid var(--border);
       position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 20px 60px;
       overflow: hidden;
     }
-
-    .hero::before {
-      content: '';
+    .hero-video {
       position: absolute;
-      top: -100px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(245, 166, 35, 0.08) 0%, transparent 70%);
-      pointer-events: none;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.18;
+      z-index: 0;
     }
-
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(13,13,26,0.85) 0%, rgba(26,13,46,0.8) 50%, rgba(13,26,26,0.85) 100%);
+      z-index: 1;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 700px; }
     .hero-badge {
       display: inline-block;
-      background: rgba(245, 166, 35, 0.15);
+      background: rgba(245,166,35,0.15);
       border: 1px solid var(--gold);
       color: var(--gold);
       padding: 6px 18px;
       border-radius: 50px;
       font-size: 13px;
       font-weight: 600;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       letter-spacing: 1px;
     }
-
     .hero h1 {
-      font-size: clamp(28px, 5vw, 52px);
+      font-size: clamp(32px, 6vw, 64px);
       font-weight: 900;
       line-height: 1.2;
-      margin-bottom: 14px;
-    }
-
-    .hero h1 span {
-      color: var(--gold);
-    }
-
-    .hero p {
-      color: var(--muted);
-      font-size: 16px;
-      max-width: 500px;
-      margin: 0 auto 30px;
-      line-height: 1.7;
-    }
-
-    .hero-stats {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      flex-wrap: wrap;
-    }
-
-    .stat {
-      text-align: center;
-    }
-
-    .stat-num {
-      font-size: 28px;
-      font-weight: 900;
-      color: var(--gold);
-    }
-
-    .stat-label {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 2px;
-    }
-
-    /* FILTERS */
-    .filters-section {
-      padding: 30px 20px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .filters-title {
-      font-size: 14px;
-      color: var(--muted);
-      margin-bottom: 12px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .filters {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .filter-btn {
-      background: var(--card);
-      border: 1px solid var(--border);
-      color: var(--muted);
-      padding: 8px 18px;
-      border-radius: 50px;
-      font-family: 'Cairo', sans-serif;
-      font-size: 14px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .filter-btn:hover,
-    .filter-btn.active {
-      background: var(--gold);
-      border-color: var(--gold);
-      color: #000;
-      font-weight: 700;
-    }
-
-    /* COMPARE BAR */
-    .compare-bar {
-      background: rgba(245, 166, 35, 0.1);
-      border: 1px solid var(--gold);
-      border-radius: 12px;
-      padding: 14px 20px;
-      margin: 0 20px 20px;
-      max-width: 1060px;
-      margin-left: auto;
-      margin-right: auto;
-      display: none;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .compare-bar.show {
-      display: flex;
-    }
-
-    .compare-bar-text {
-      color: var(--gold);
-      font-weight: 700;
-      font-size: 15px;
-    }
-
-    .compare-bar-names {
-      color: var(--text);
-      font-size: 14px;
-    }
-
-    .btn-compare-now {
-      background: var(--gold);
-      color: #000;
-      border: none;
-      padding: 10px 24px;
-      border-radius: 8px;
-      font-family: 'Cairo', sans-serif;
-      font-weight: 700;
-      font-size: 14px;
-      cursor: pointer;
-      transition: opacity 0.2s;
-    }
-
-    .btn-compare-now:hover {
-      opacity: 0.85;
-    }
-
-    .btn-clear {
-      background: none;
-      border: 1px solid var(--muted);
-      color: var(--muted);
-      padding: 8px 16px;
-      border-radius: 8px;
-      font-family: 'Cairo', sans-serif;
-      font-size: 13px;
-      cursor: pointer;
-    }
-
-    /* GRID */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 20px;
-      padding: 0 20px 40px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    /* CARD */
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
-      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
-      cursor: pointer;
-      position: relative;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(245, 166, 35, 0.5);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-    }
-
-    .card.selected {
-      border-color: var(--gold);
-      box-shadow: 0 0 0 2px rgba(245, 166, 35, 0.3);
-    }
-
-    .card-check {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      width: 24px;
-      height: 24px;
-      background: var(--dark);
-      border: 2px solid var(--border);
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-      transition: all 0.2s;
-      z-index: 2;
-    }
-
-    .card.selected .card-check {
-      background: var(--gold);
-      border-color: var(--gold);
-      color: #000;
-    }
-
-    .card-header {
-      padding: 24px 20px 16px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .company-logo {
-      width: 56px;
-      height: 56px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      font-weight: 900;
-      flex-shrink: 0;
-    }
-
-    .company-info h3 {
-      font-size: 18px;
-      font-weight: 700;
-    }
-
-    .company-info p {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 2px;
-    }
-
-    .badge {
-      margin-right: auto;
-      font-size: 11px;
-      padding: 3px 10px;
-      border-radius: 50px;
-      font-weight: 700;
-    }
-
-    .badge-popular {
-      background: rgba(245, 166, 35, 0.15);
-      color: var(--gold);
-      border: 1px solid rgba(245, 166, 35, 0.4);
-    }
-
-    .badge-cheap {
-      background: rgba(0, 200, 150, 0.1);
-      color: var(--green);
-      border: 1px solid rgba(0, 200, 150, 0.3);
-    }
-
-    .badge-fast {
-      background: rgba(100, 150, 255, 0.1);
-      color: #6496FF;
-      border: 1px solid rgba(100, 150, 255, 0.3);
-    }
-
-    .badge-global {
-      background: rgba(200, 100, 255, 0.1);
-      color: #C864FF;
-      border: 1px solid rgba(200, 100, 255, 0.3);
-    }
-
-    .card-body {
-      padding: 16px 20px;
-    }
-
-    .specs {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 14px;
-    }
-
-    .spec {
-      background: rgba(255, 255, 255, 0.04);
-      border-radius: 8px;
-      padding: 10px;
-    }
-
-    .spec-label {
-      font-size: 11px;
-      color: var(--muted);
-      margin-bottom: 3px;
-    }
-
-    .spec-value {
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .spec-value.green {
-      color: var(--green);
-    }
-
-    .spec-value.gold {
-      color: var(--gold);
-    }
-
-    .features {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
       margin-bottom: 16px;
     }
-
-    .feature-tag {
-      font-size: 12px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 4px 10px;
-      border-radius: 50px;
-      color: var(--muted);
+    .hero h1 span { color: var(--gold); }
+    .hero p { color: var(--muted); font-size: 17px; max-width: 500px; margin: 0 auto 36px; line-height: 1.7; }
+    .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 50px; }
+    .btn-primary {
+      background: var(--gold); color: #000; border: none;
+      padding: 14px 32px; border-radius: 12px;
+      font-family: 'Cairo', sans-serif; font-size: 16px; font-weight: 700;
+      cursor: pointer; transition: opacity 0.2s, transform 0.1s;
     }
-
-    .feature-tag.yes {
-      color: var(--green);
-      border-color: rgba(0, 200, 150, 0.2);
-      background: rgba(0, 200, 150, 0.07);
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
+    .btn-secondary {
+      background: rgba(255,255,255,0.08); color: var(--text);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 14px 32px; border-radius: 12px;
+      font-family: 'Cairo', sans-serif; font-size: 16px; font-weight: 600;
+      cursor: pointer; transition: background 0.2s;
     }
+    .btn-secondary:hover { background: rgba(255,255,255,0.12); }
+    .hero-stats { display: flex; justify-content: center; gap: 50px; flex-wrap: wrap; }
+    .stat { text-align: center; }
+    .stat-num { font-size: 32px; font-weight: 900; color: var(--gold); }
+    .stat-label { font-size: 12px; color: var(--muted); margin-top: 3px; }
 
-    .whatsapp-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      width: 100%;
-      padding: 13px;
-      background: linear-gradient(135deg, #25D366, #128C7E);
-      border: none;
-      border-radius: 10px;
-      color: white;
-      font-family: 'Cairo', sans-serif;
-      font-size: 15px;
-      font-weight: 700;
-      cursor: pointer;
-      text-decoration: none;
-      transition: opacity 0.2s, transform 0.1s;
-    }
-
-    .whatsapp-btn:hover {
-      opacity: 0.9;
-      transform: scale(1.01);
-    }
-
-    .whatsapp-icon {
-      width: 20px;
-      height: 20px;
-      fill: white;
-    }
-
-    /* COMPARE MODAL */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.85);
-      display: none;
-      align-items: flex-start;
-      justify-content: center;
-      z-index: 100;
-      padding: 20px;
-      overflow-y: auto;
-    }
-
-    .modal-overlay.show {
-      display: flex;
-    }
-
-    .modal {
-      background: #13132A;
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 30px;
-      width: 100%;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .modal-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 24px;
-    }
-
-    .modal-title {
-      font-size: 22px;
-      font-weight: 900;
-    }
-
-    .modal-close {
-      background: rgba(255, 255, 255, 0.1);
-      border: none;
-      color: white;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      font-size: 18px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .compare-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    .compare-table th,
-    .compare-table td {
-      padding: 14px 16px;
-      text-align: center;
+    /* ===== NAV ===== */
+    .nav {
+      position: fixed; top: 0; width: 100%; z-index: 999;
+      background: rgba(13,13,26,0.92); backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
-      font-size: 14px;
+      padding: 14px 24px;
+      display: flex; align-items: center; justify-content: space-between;
     }
-
-    .compare-table th {
-      font-weight: 700;
-      color: var(--gold);
-      font-size: 16px;
+    .nav-logo { font-size: 20px; font-weight: 900; color: var(--gold); }
+    .nav-links { display: flex; gap: 6px; }
+    .nav-link {
+      background: none; border: none; color: var(--muted);
+      font-family: 'Cairo', sans-serif; font-size: 14px;
+      padding: 7px 14px; border-radius: 8px; cursor: pointer;
+      transition: all 0.2s;
     }
-
-    .compare-table td:first-child {
-      text-align: right;
-      color: var(--muted);
-      font-size: 13px;
+    .nav-link:hover, .nav-link.active { background: rgba(245,166,35,0.1); color: var(--gold); }
+    .nav-admin-btn {
+      background: rgba(245,166,35,0.12); border: 1px solid var(--border);
+      color: var(--gold); font-family: 'Cairo', sans-serif; font-size: 13px;
+      padding: 7px 14px; border-radius: 8px; cursor: pointer; transition: all 0.2s;
     }
+    .nav-admin-btn:hover { background: rgba(245,166,35,0.2); }
 
-    .compare-table tr:last-child td {
-      border-bottom: none;
-    }
-
-    .tick {
-      color: var(--green);
-      font-size: 18px;
-    }
-
-    .cross {
-      color: var(--red);
-      font-size: 18px;
-    }
-
-    /* FOOTER */
-    footer {
+    /* ===== SECTIONS ===== */
+    .section { padding: 60px 20px; max-width: 1100px; margin: 0 auto; }
+    .section-title {
+      font-size: 28px; font-weight: 900; margin-bottom: 8px;
       text-align: center;
-      padding: 30px 20px;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 13px;
+    }
+    .section-title span { color: var(--gold); }
+    .section-sub { text-align: center; color: var(--muted); font-size: 15px; margin-bottom: 36px; }
+
+    /* ===== FILTERS ===== */
+    .filters-wrap { padding: 0 20px 10px; max-width: 1100px; margin: 0 auto; }
+    .filters-title { font-size: 13px; color: var(--muted); margin-bottom: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+    .filters { display: flex; gap: 10px; flex-wrap: wrap; }
+    .filter-btn {
+      background: var(--card); border: 1px solid var(--border); color: var(--muted);
+      padding: 8px 18px; border-radius: 50px;
+      font-family: 'Cairo', sans-serif; font-size: 14px; cursor: pointer; transition: all 0.2s;
+    }
+    .filter-btn:hover, .filter-btn.active { background: var(--gold); border-color: var(--gold); color: #000; font-weight: 700; }
+
+    /* ===== COMPARE BAR ===== */
+    .compare-bar {
+      background: rgba(245,166,35,0.08); border: 1px solid var(--gold);
+      border-radius: 12px; padding: 14px 20px;
+      max-width: 1060px; margin: 10px auto 20px;
+      display: none; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+    }
+    .compare-bar.show { display: flex; }
+    .compare-bar-text { color: var(--gold); font-weight: 700; font-size: 15px; }
+    .compare-bar-names { color: var(--text); font-size: 14px; }
+    .btn-compare-now {
+      background: var(--gold); color: #000; border: none;
+      padding: 10px 24px; border-radius: 8px;
+      font-family: 'Cairo', sans-serif; font-weight: 700; font-size: 14px;
+      cursor: pointer; transition: opacity 0.2s;
+    }
+    .btn-compare-now:hover { opacity: 0.85; }
+    .btn-clear {
+      background: none; border: 1px solid var(--muted); color: var(--muted);
+      padding: 8px 16px; border-radius: 8px;
+      font-family: 'Cairo', sans-serif; font-size: 13px; cursor: pointer;
     }
 
-    footer span {
-      color: var(--gold);
+    /* ===== CARDS ===== */
+    .grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+      gap: 20px; padding: 0 20px 20px; max-width: 1100px; margin: 0 auto;
     }
+    .card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+      cursor: pointer; position: relative;
+    }
+    .card:hover { transform: translateY(-4px); border-color: rgba(245,166,35,0.5); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
+    .card.selected { border-color: var(--gold); box-shadow: 0 0 0 2px rgba(245,166,35,0.3); }
+    .card-check {
+      position: absolute; top: 12px; left: 12px;
+      width: 24px; height: 24px;
+      background: var(--dark); border: 2px solid var(--border);
+      border-radius: 6px; display: flex; align-items: center; justify-content: center;
+      font-size: 13px; transition: all 0.2s; z-index: 2;
+    }
+    .card.selected .card-check { background: var(--gold); border-color: var(--gold); color: #000; }
+    .card-header { padding: 24px 20px 16px; display: flex; align-items: center; gap: 14px; border-bottom: 1px solid var(--border); }
+    .company-logo { width: 56px; height: 56px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 900; flex-shrink: 0; }
+    .company-info h3 { font-size: 17px; font-weight: 700; }
+    .company-info p { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .badge { margin-right: auto; font-size: 11px; padding: 3px 10px; border-radius: 50px; font-weight: 700; }
+    .badge-popular { background: rgba(245,166,35,0.15); color: var(--gold); border: 1px solid rgba(245,166,35,0.4); }
+    .badge-cheap { background: rgba(0,200,150,0.1); color: var(--green); border: 1px solid rgba(0,200,150,0.3); }
+    .badge-fast { background: rgba(100,150,255,0.1); color: #6496FF; border: 1px solid rgba(100,150,255,0.3); }
+    .badge-global { background: rgba(200,100,255,0.1); color: #C864FF; border: 1px solid rgba(200,100,255,0.3); }
+    .card-body { padding: 16px 20px; }
+    .specs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+    .spec { background: rgba(255,255,255,0.04); border-radius: 8px; padding: 10px; }
+    .spec-label { font-size: 11px; color: var(--muted); margin-bottom: 3px; }
+    .spec-value { font-size: 14px; font-weight: 700; }
+    .spec-value.green { color: var(--green); }
+    .spec-value.gold { color: var(--gold); }
+    .features { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
+    .feature-tag { font-size: 12px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); padding: 4px 10px; border-radius: 50px; color: var(--muted); }
+    .feature-tag.yes { color: var(--green); border-color: rgba(0,200,150,0.2); background: rgba(0,200,150,0.07); }
+    .whatsapp-btn {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%; padding: 13px;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      border: none; border-radius: 10px; color: white;
+      font-family: 'Cairo', sans-serif; font-size: 15px; font-weight: 700;
+      cursor: pointer; text-decoration: none; transition: opacity 0.2s;
+    }
+    .whatsapp-btn:hover { opacity: 0.9; }
+    .whatsapp-icon { width: 20px; height: 20px; fill: white; }
 
+    /* ===== ORDER FORM ===== */
+    .order-section {
+      background: linear-gradient(135deg, rgba(245,166,35,0.05), rgba(245,166,35,0.02));
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 70px 20px;
+    }
+    .order-inner { max-width: 700px; margin: 0 auto; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-full { grid-column: 1 / -1; }
+    .form-group { display: flex; flex-direction: column; gap: 7px; }
+    .form-group label { font-size: 13px; font-weight: 600; color: var(--muted); }
+    .form-group input, .form-group select, .form-group textarea {
+      background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+      border-radius: 10px; padding: 12px 14px; color: var(--text);
+      font-family: 'Cairo', sans-serif; font-size: 14px;
+      outline: none; transition: border-color 0.2s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--gold);
+    }
+    .form-group select option { background: var(--card); }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+    .form-submit {
+      width: 100%; padding: 16px; margin-top: 8px;
+      background: var(--gold); color: #000; border: none; border-radius: 12px;
+      font-family: 'Cairo', sans-serif; font-size: 17px; font-weight: 900;
+      cursor: pointer; transition: opacity 0.2s, transform 0.1s;
+    }
+    .form-submit:hover { opacity: 0.88; transform: translateY(-1px); }
+    .form-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+    .form-success {
+      display: none; text-align: center; padding: 30px;
+      background: rgba(0,200,150,0.08); border: 1px solid rgba(0,200,150,0.3);
+      border-radius: 14px; margin-top: 20px;
+    }
+    .form-success.show { display: block; }
+    .form-success h3 { color: var(--green); font-size: 22px; margin-bottom: 8px; }
+    .form-success p { color: var(--muted); font-size: 15px; }
+
+    /* ===== MODALS ===== */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.88);
+      display: none; align-items: flex-start; justify-content: center;
+      z-index: 1000; padding: 20px; overflow-y: auto;
+    }
+    .modal-overlay.show { display: flex; }
+    .modal {
+      background: #13132A; border: 1px solid var(--border);
+      border-radius: 20px; padding: 30px;
+      width: 100%; max-width: 900px; margin: auto;
+    }
+    .modal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+    .modal-title { font-size: 22px; font-weight: 900; }
+    .modal-close {
+      background: rgba(255,255,255,0.1); border: none; color: white;
+      width: 36px; height: 36px; border-radius: 50%; font-size: 18px;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+    }
+    .compare-table { width: 100%; border-collapse: collapse; }
+    .compare-table th, .compare-table td { padding: 14px 16px; text-align: center; border-bottom: 1px solid var(--border); font-size: 14px; }
+    .compare-table th { font-weight: 700; color: var(--gold); font-size: 16px; }
+    .compare-table td:first-child { text-align: right; color: var(--muted); font-size: 13px; }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .tick { color: var(--green); font-size: 18px; }
+    .cross { color: var(--red); font-size: 18px; }
+
+    /* ===== ADMIN LOGIN ===== */
+    .admin-login-modal { max-width: 420px; }
+    .admin-login-modal .form-group { margin-bottom: 14px; }
+    .admin-login-modal input {
+      background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+      border-radius: 10px; padding: 12px 14px; color: var(--text);
+      font-family: 'Cairo', sans-serif; font-size: 14px; width: 100%;
+      outline: none; transition: border-color 0.2s;
+    }
+    .admin-login-modal input:focus { border-color: var(--gold); }
+    .login-error { color: var(--red); font-size: 13px; margin-top: 8px; display: none; }
+    .login-error.show { display: block; }
+
+    /* ===== ADMIN PANEL ===== */
+    .admin-panel {
+      display: none; position: fixed; inset: 0;
+      background: var(--dark); z-index: 2000; overflow-y: auto;
+    }
+    .admin-panel.show { display: block; }
+    .admin-nav {
+      background: var(--card); border-bottom: 1px solid var(--border);
+      padding: 16px 24px; display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 10;
+    }
+    .admin-nav-title { font-size: 18px; font-weight: 900; color: var(--gold); }
+    .admin-nav-right { display: flex; gap: 10px; align-items: center; }
+    .admin-tabs { display: flex; gap: 4px; padding: 20px 24px 0; border-bottom: 1px solid var(--border); }
+    .admin-tab {
+      background: none; border: none; color: var(--muted);
+      font-family: 'Cairo', sans-serif; font-size: 15px; font-weight: 600;
+      padding: 10px 20px; border-radius: 10px 10px 0 0; cursor: pointer;
+      transition: all 0.2s; border-bottom: 2px solid transparent;
+    }
+    .admin-tab.active { color: var(--gold); border-bottom-color: var(--gold); background: rgba(245,166,35,0.06); }
+    .admin-body { padding: 24px; max-width: 1200px; margin: 0 auto; }
+    .admin-section { display: none; }
+    .admin-section.active { display: block; }
+
+    /* Admin Cards Table */
+    .admin-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .admin-table th { text-align: right; padding: 12px 14px; color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; border-bottom: 1px solid var(--border); }
+    .admin-table td { padding: 14px; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: middle; }
+    .admin-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .admin-table .company-logo-sm { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 900; }
+    .status-badge { display: inline-block; padding: 3px 10px; border-radius: 50px; font-size: 12px; font-weight: 600; }
+    .status-new { background: rgba(245,166,35,0.15); color: var(--gold); }
+    .status-done { background: rgba(0,200,150,0.12); color: var(--green); }
+    .status-cancelled { background: rgba(255,90,90,0.12); color: var(--red); }
+    .status-active { background: rgba(0,200,150,0.12); color: var(--green); }
+    .status-inactive { background: rgba(255,90,90,0.12); color: var(--red); }
+    .action-btn {
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08);
+      color: var(--text); font-family: 'Cairo', sans-serif; font-size: 12px;
+      padding: 5px 12px; border-radius: 6px; cursor: pointer; transition: all 0.2s;
+      margin-left: 4px;
+    }
+    .action-btn:hover { background: rgba(255,255,255,0.1); }
+    .action-btn.danger { color: var(--red); border-color: rgba(255,90,90,0.2); }
+    .action-btn.danger:hover { background: rgba(255,90,90,0.1); }
+    .action-btn.success { color: var(--green); border-color: rgba(0,200,150,0.2); }
+
+    /* Admin Form */
+    .admin-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px; }
+    .admin-form-full { grid-column: 1 / -1; }
+    .admin-input {
+      background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+      border-radius: 10px; padding: 11px 13px; color: var(--text);
+      font-family: 'Cairo', sans-serif; font-size: 14px; width: 100%;
+      outline: none; transition: border-color 0.2s;
+    }
+    .admin-input:focus { border-color: var(--gold); }
+    .admin-label { display: block; font-size: 12px; font-weight: 600; color: var(--muted); margin-bottom: 6px; }
+    .admin-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; margin-bottom: 20px; }
+    .admin-card-title { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
+    .admin-card-sub { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 16px; margin-bottom: 28px; }
+    .stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 20px; }
+    .stat-card-num { font-size: 36px; font-weight: 900; color: var(--gold); }
+    .stat-card-label { font-size: 13px; color: var(--muted); margin-top: 4px; }
+    .toggle-switch { position: relative; display: inline-block; width: 44px; height: 24px; }
+    .toggle-switch input { opacity: 0; width: 0; height: 0; }
+    .toggle-slider { position: absolute; cursor: pointer; inset: 0; background: rgba(255,255,255,0.1); border-radius: 24px; transition: 0.3s; }
+    .toggle-slider:before { position: absolute; content: ""; height: 18px; width: 18px; right: 3px; bottom: 3px; background: white; border-radius: 50%; transition: 0.3s; }
+    input:checked + .toggle-slider { background: var(--green); }
+    input:checked + .toggle-slider:before { transform: translateX(-20px); }
+
+    /* ===== FOOTER ===== */
+    footer { text-align: center; padding: 30px 20px; border-top: 1px solid var(--border); color: var(--muted); font-size: 13px; }
+    footer span { color: var(--gold); }
+
+    /* ===== LOADING ===== */
+    .loading { text-align: center; padding: 60px; color: var(--muted); }
+    .loading-spinner { display: inline-block; width: 40px; height: 40px; border: 3px solid var(--border); border-top-color: var(--gold); border-radius: 50%; animation: spin 0.8s linear infinite; margin-bottom: 14px; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ===== RESPONSIVE ===== */
     @media (max-width: 600px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      .specs {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .hero-stats {
-        gap: 24px;
-      }
-
-      .compare-table {
-        font-size: 12px;
-      }
-
-      .compare-table th,
-      .compare-table td {
-        padding: 10px 8px;
-      }
+      .grid { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .admin-form-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 28px; }
+      .compare-table { font-size: 12px; }
+      .compare-table th, .compare-table td { padding: 10px 8px; }
+      .nav-links { display: none; }
     }
   </style>
 </head>
-
 <body>
 
-  <!-- HERO -->
-  <div class="hero">
-    <div class="hero-badge">🚚 دليل الشحن في مصر 2026</div>
+<!-- ===== NAV ===== -->
+<nav class="nav">
+  <div class="nav-logo">🚚 هشحنلك</div>
+  <div class="nav-links">
+    <button class="nav-link active" onclick="scrollTo('#companies')">شركات الشحن</button>
+    <button class="nav-link" onclick="scrollTo('#order')">اطلب شحنة</button>
+  </div>
+  <button class="nav-admin-btn" onclick="openAdminLogin()">⚙️ أدمن</button>
+</nav>
+
+<!-- ===== HERO ===== -->
+<div class="hero" id="home">
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="https://assets.mixkit.co/videos/preview/mixkit-delivery-man-going-door-to-door-delivering-packages-41624-large.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🚀 دليل الشحن في مصر 2026</div>
     <h1>قارن بين <span>شركات الشحن</span><br>واختار الأنسب ليك</h1>
-    <p>كل شركات الشحن في مصر في مكان واحد — قارن الأسعار والسرعة والمميزات وتواصل معانا فوراً</p>
+    <p>كل شركات الشحن في مصر في مكان واحد — قارن الأسعار والسرعة وسيب لنا طلبك واحنا نتواصل معاك</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="document.getElementById('companies').scrollIntoView({behavior:'smooth'})">شوف الشركات 🔍</button>
+      <button class="btn-secondary" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">اطلب شحنة الآن 📦</button>
+    </div>
     <div class="hero-stats">
-      <div class="stat">
-        <div class="stat-num">8</div>
-        <div class="stat-label">شركة شحن</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">27</div>
-        <div class="stat-label">محافظة</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">24/7</div>
-        <div class="stat-label">تواصل معانا</div>
-      </div>
+      <div class="stat"><div class="stat-num" id="stat-companies">8</div><div class="stat-label">شركة شحن</div></div>
+      <div class="stat"><div class="stat-num">27</div><div class="stat-label">محافظة</div></div>
+      <div class="stat"><div class="stat-num">24/7</div><div class="stat-label">تواصل معانا</div></div>
     </div>
   </div>
+</div>
 
-  <!-- FILTERS -->
-  <div class="filters-section">
+<!-- ===== COMPANIES ===== -->
+<div id="companies">
+  <div class="section" style="padding-bottom:10px;">
+    <h2 class="section-title">شركات <span>الشحن</span></h2>
+    <p class="section-sub">اختار لغاية 3 شركات وقارن بينهم</p>
+  </div>
+
+  <div class="filters-wrap">
     <div class="filters-title">فلتر حسب</div>
     <div class="filters">
-      <button class="filter-btn active" onclick="filterCards('all', this)">الكل</button>
-      <button class="filter-btn" onclick="filterCards('cod', this)">دفع عند الاستلام</button>
-      <button class="filter-btn" onclick="filterCards('fast', this)">توصيل سريع</button>
-      <button class="filter-btn" onclick="filterCards('cheap', this)">الأرخص</button>
-      <button class="filter-btn" onclick="filterCards('global', this)">شحن دولي</button>
+      <button class="filter-btn active" onclick="filterCards('all',this)">الكل</button>
+      <button class="filter-btn" onclick="filterCards('cod',this)">دفع عند الاستلام</button>
+      <button class="filter-btn" onclick="filterCards('fast',this)">توصيل سريع</button>
+      <button class="filter-btn" onclick="filterCards('cheap',this)">الأرخص</button>
+      <button class="filter-btn" onclick="filterCards('global',this)">شحن دولي</button>
     </div>
   </div>
 
-  <!-- COMPARE BAR -->
   <div class="compare-bar" id="compareBar">
     <div>
       <div class="compare-bar-text">⚡ مقارنة سريعة</div>
@@ -596,508 +445,665 @@
     </div>
   </div>
 
-  <!-- GRID -->
   <div class="grid" id="grid">
+    <div class="loading">
+      <div class="loading-spinner"></div>
+      <div>بيتحمل شركات الشحن...</div>
+    </div>
+  </div>
+</div>
 
-    <!-- بوسطة -->
-    <div class="card" data-tags="cod fast cheap" onclick="toggleSelect(this, 'Bosta بوسطة')">
-      <div class="card-check">✓</div>
-      <div class="card-header">
-        <div class="company-logo" style="background:#FF6B35;color:#fff;">B</div>
-        <div class="company-info">
-          <h3>Bosta بوسطة</h3>
-          <p>الأسرع في السوق المصري</p>
-        </div>
-        <span class="badge badge-popular">الأكثر طلباً</span>
+<!-- ===== ORDER FORM ===== -->
+<div class="order-section" id="order">
+  <div class="order-inner">
+    <h2 class="section-title">اطلب <span>شحنتك</span> دلوقتي</h2>
+    <p class="section-sub" style="margin-bottom:30px;">املا البيانات وهنتواصل معاك في أقرب وقت</p>
+
+    <div class="form-grid" id="orderForm">
+      <div class="form-group">
+        <label>الاسم الكامل *</label>
+        <input type="text" id="f-name" placeholder="اسمك هنا">
       </div>
-      <div class="card-body">
-        <div class="specs">
-          <div class="spec">
-            <div class="spec-label">السعر ابتداءً من</div>
-            <div class="spec-value gold">45 جنيه</div>
-          </div>
-          <div class="spec">
-            <div class="spec-label">وقت التوصيل</div>
-            <div class="spec-value green">24 ساعة</div>
-          </div>
-          <div class="spec">
-            <div class="spec-label">التغطية</div>
-            <div class="spec-value">27 محافظة</div>
-          </div>
-          <div class="spec">
-            <div class="spec-label">التتبع</div>
-            <div class="spec-value green">فوري</div>
-          </div>
-        </div>
-        <div class="features">
-          <span class="feature-tag yes">✓ دفع عند الاستلام</span>
-          <span class="feature-tag yes">✓ إرجاع مجاني</span>
-          <span class="feature-tag">داخلي فقط</span>
-        </div>
-        <a class="whatsapp-btn" href="https://wa.me/201044547874?text=عايز أعرف أكتر عن Bosta بوسطة" target="_blank"
-          onclick="event.stopPropagation()">
-          <svg class="whatsapp-icon" viewBox="0 0 24 24">
-            <path
-              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
-            <path
-              d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.523 5.854L0 24l6.29-1.493A11.928 11.928 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.373l-.36-.213-3.733.886.939-3.63-.233-.374A9.818 9.818 0 1112 21.818z" />
-          </svg>
-          تواصل معانا عشان Bosta
-        </a>
+      <div class="form-group">
+        <label>رقم التليفون *</label>
+        <input type="tel" id="f-phone" placeholder="01xxxxxxxxx">
+      </div>
+      <div class="form-group">
+        <label>المحافظة *</label>
+        <select id="f-gov">
+          <option value="">اختار المحافظة</option>
+          <option>القاهرة</option><option>الجيزة</option><option>الإسكندرية</option>
+          <option>البحيرة</option><option>الدقهلية</option><option>الشرقية</option>
+          <option>الغربية</option><option>المنوفية</option><option>القليوبية</option>
+          <option>كفر الشيخ</option><option>دمياط</option><option>بورسعيد</option>
+          <option>الإسماعيلية</option><option>السويس</option><option>شمال سيناء</option>
+          <option>جنوب سيناء</option><option>الفيوم</option><option>بني سويف</option>
+          <option>المنيا</option><option>أسيوط</option><option>سوهاج</option>
+          <option>قنا</option><option>الأقصر</option><option>أسوان</option>
+          <option>البحر الأحمر</option><option>الوادي الجديد</option><option>مطروح</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>شركة الشحن المفضلة</label>
+        <select id="f-company">
+          <option value="">مش مهم / أي شركة</option>
+        </select>
+      </div>
+      <div class="form-group form-full">
+        <label>العنوان بالتفصيل</label>
+        <input type="text" id="f-address" placeholder="الشارع، الحي، المدينة">
+      </div>
+      <div class="form-group form-full">
+        <label>وصف المنتج / الشحنة *</label>
+        <textarea id="f-product" placeholder="إيه اللي هتشحنه؟ حجمه إيه تقريباً؟"></textarea>
+      </div>
+      <div class="form-group">
+        <label>الوزن التقريبي (كيلو)</label>
+        <input type="number" id="f-weight" placeholder="مثال: 2" min="0" step="0.5">
+      </div>
+      <div class="form-group">
+        <label>ملاحظات إضافية</label>
+        <input type="text" id="f-notes" placeholder="أي تفاصيل تانية">
+      </div>
+      <div class="form-full">
+        <button class="form-submit" onclick="submitOrder()">📦 ابعت الطلب</button>
       </div>
     </div>
 
-    <!-- J&T -->
-    <div class="card" data-tags="cod cheap" onclick="toggleSelect(this, 'J&T Express')">
-      <div class="card-check">✓</div>
-      <div class="card-header">
-        <div class="company-logo" style="background:#E31837;color:#fff;">J&T</div>
-        <div class="company-info">
-          <h3>J&T Express</h3>
-          <p>الأرخص للأوزان الكبيرة</p>
-        </div>
-        <span class="badge badge-cheap">الأرخص</span>
+    <div class="form-success" id="orderSuccess">
+      <h3>✅ تم استلام طلبك!</h3>
+      <p>هنتواصل معاك على رقم التليفون اللي بعته في أقرب وقت</p>
+      <p style="margin-top:8px;color:var(--gold);font-weight:700;">رقمك: <span id="successPhone"></span></p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== COMPARE MODAL ===== -->
+<div class="modal-overlay" id="compareModal" onclick="if(event.target===this)closeModal('compareModal')">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">⚡ مقارنة الشركات</div>
+      <button class="modal-close" onclick="closeModal('compareModal')">✕</button>
+    </div>
+    <div style="overflow-x:auto;">
+      <table class="compare-table" id="compareTable"></table>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ADMIN LOGIN MODAL ===== -->
+<div class="modal-overlay" id="adminLoginModal" onclick="if(event.target===this)closeModal('adminLoginModal')">
+  <div class="modal admin-login-modal">
+    <div class="modal-header">
+      <div class="modal-title">🔐 دخول الأدمن</div>
+      <button class="modal-close" onclick="closeModal('adminLoginModal')">✕</button>
+    </div>
+    <div class="form-group" style="margin-bottom:14px;">
+      <label class="admin-label">البريد الإلكتروني</label>
+      <input class="admin-input" type="email" id="adminEmail" placeholder="admin@heshnelak.com">
+    </div>
+    <div class="form-group" style="margin-bottom:20px;">
+      <label class="admin-label">كلمة السر</label>
+      <input class="admin-input" type="password" id="adminPassword" placeholder="••••••••" onkeydown="if(event.key==='Enter')adminLogin()">
+    </div>
+    <button class="form-submit" onclick="adminLogin()">دخول</button>
+    <div class="login-error" id="loginError">❌ البريد أو كلمة السر غلط</div>
+  </div>
+</div>
+
+<!-- ===== ADMIN PANEL ===== -->
+<div class="admin-panel" id="adminPanel">
+  <div class="admin-nav">
+    <div class="admin-nav-title">🚚 لوحة تحكم هشحنلك</div>
+    <div class="admin-nav-right">
+      <span style="color:var(--muted);font-size:13px;" id="adminUserEmail"></span>
+      <button class="action-btn" onclick="adminLogout()">خروج</button>
+    </div>
+  </div>
+
+  <div class="admin-tabs">
+    <button class="admin-tab active" onclick="switchTab('tab-orders')">📋 الطلبات</button>
+    <button class="admin-tab" onclick="switchTab('tab-companies')">🏢 الشركات</button>
+    <button class="admin-tab" onclick="switchTab('tab-add-company')">➕ إضافة شركة</button>
+  </div>
+
+  <div class="admin-body">
+
+    <!-- ORDERS TAB -->
+    <div class="admin-section active" id="tab-orders">
+      <div class="stats-grid" id="ordersStats">
+        <div class="stat-card"><div class="stat-card-num" id="statTotal">-</div><div class="stat-card-label">إجمالي الطلبات</div></div>
+        <div class="stat-card"><div class="stat-card-num" id="statNew">-</div><div class="stat-card-label">طلبات جديدة</div></div>
+        <div class="stat-card"><div class="stat-card-num" id="statDone">-</div><div class="stat-card-label">تم التنفيذ</div></div>
       </div>
-      <div class="card-body">
-        <div class="specs">
-          <div class="spec">
-            <div class="spec-label">السعر ابتداءً من</div>
-            <div class="spec-value gold">35 جنيه</div>
-          </div>
-          <div class="spec">
-            <div class="spec-label">وقت التوصيل</div>
-            <div class="spec-value green">48-72 ساعة</div>
-          </div>
-          <div class="spec">
-            <div class="spec-label">التغطية</div>
-            <div class="spec-value">25 محافظة</div>
-          </div>
-          <div class="spec">
-            <div class="spec-label">التتبع</div>
-            <div class="spec-value green">متاح</div>
-          </div>
+      <div class="admin-card">
+        <div class="admin-card-title">طلبات العملاء</div>
+        <div class="admin-card-sub">كل الطلبات اللي جت من الموقع</div>
+        <div style="overflow-x:auto;">
+          <table class="admin-table" id="ordersTable">
+            <thead><tr><th>الاسم</th><th>التليفون</th><th>المحافظة</th><th>الشركة المفضلة</th><th>الوصف</th><th>التاريخ</th><th>الحالة</th><th>إجراء</th></tr></thead>
+            <tbody id="ordersBody"><tr><td colspan="8" style="text-align:center;padding:30px;color:var(--muted);">بيتحمل...</td></tr></tbody>
+          </table>
         </div>
-        <div class="features">
-          <span class="feature-tag yes">✓ دفع عند الاستلام</span>
-          <span class="feature-tag yes">✓ أسعار منافسة</span>
-          <span class="feature-tag">داخلي فقط</span>
-        </div>
-        <a class="whatsapp-btn" href="https://wa.me/201044547874?text=عايز أعرف أكتر عن J&T Express" target="_blank"
-          onclick="event.stopPropagation()">
-          <svg class="whatsapp-icon" viewBox="0 0 24 24">
-            <path
-              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
-            <path
-              d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.523 5.854L0 24l6.29-1.493A11.928 11.928 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.373l-.36-.213-3.733.886.939-3.63-.233-.374A9.818 9.818 0 1112 21.818z" />
-          </svg>
-          تواصل معانا عشان J&T
-        </a>
       </div>
     </div>
 
-    <!-- Aramex -->
-    <div class="card" data-tags="global fast cod" onclick="toggleSelect(this, 'Aramex أرامكس')">
-      <div class="card-check">✓</div>
-      <div class="card-header">
-        <div class="company-logo" style="background:#CC0000;color:#fff;">AR</div>
-        <div class="company-info">
-          <h3>Aramex أرامكس</h3>
-          <p>الأشهر في الشحن الدولي</p>
+    <!-- COMPANIES TAB -->
+    <div class="admin-section" id="tab-companies">
+      <div class="admin-card">
+        <div class="admin-card-title">شركات الشحن</div>
+        <div class="admin-card-sub">تحكم في الشركات الظاهرة على الموقع</div>
+        <div style="overflow-x:auto;">
+          <table class="admin-table" id="companiesTable">
+            <thead><tr><th>الشركة</th><th>السعر</th><th>وقت التوصيل</th><th>التغطية</th><th>الحالة</th><th>إجراء</th></tr></thead>
+            <tbody id="companiesBody"><tr><td colspan="6" style="text-align:center;padding:30px;color:var(--muted);">بيتحمل...</td></tr></tbody>
+          </table>
         </div>
-        <span class="badge badge-global">دولي</span>
-      </div>
-      <div class="card-body">
-        <div class="specs">
-          <div class="spec">
-            <div class="spec-label">السعر ابتداءً من</div>
-            <div class="spec-value gold">60 جنيه</div>
-          </div>
-          <div class="spec">
-            <div class="spec-label">وقت التوصيل</div>
-            <div class="spec-value green">24-48 ساعة</div>
-          </div>
-          <div class="spec">
-            <div class="spec-label">التغطية</div>
-            <div class="spec-value">دولي + محلي</div>
-          </div>
-          <div class="spec">
-            <div class="spec-label">التتبع</div>
-            <div class="spec-value green">متطور</div>
-          </div>
-        </div>
-        <div class="features">
-          <span class="feature-tag yes">✓ شحن دولي</span>
-          <span class="feature-tag yes">✓ دفع عند الاستلام</span>
-          <span class="feature-tag yes">✓ تتبع لحظي</span>
-        </div>
-        <a class="whatsapp-btn" href="https://wa.me/201044547874?text=عايز أعرف أكتر عن Aramex أرامكس" target="_blank"
-          onclick="event.stopPropagation()">
-          <svg class="whatsapp-icon" viewBox="0 0 24 24">
-            <path
-              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
-            <path
-              d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.523 5.854L0 24l6.29-1.493A11.928 11.928 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.373l-.36-.213-3.733.886.939-3.63-.233-.374A9.818 9.818 0 1112 21.818z" />
-          </svg>
-          تواصل معانا عشان أرامكس
-        </a>
       </div>
     </div>
 
-    <!-- MylerZ -->
-    <div class="card" data-tags="cod cheap fast" onclick="toggleSelect(this, 'MylerZ مايلرز')">
-      <div class="card-check">✓</div>
-      <div class="card-header">
-        <div class="company-logo" style="background:#6C3FC5;color:#fff;">MY</div>
-        <div class="company-info">
-          <h3>MylerZ مايلرز</h3>
-          <p>مخصص للتجارة الإلكترونية</p>
-        </div>
-        <span class="badge badge-fast">سريع</span>
-      </div>
-      <div class="card-body">
-        <div class="specs">
-          <div class="spec">
-            <div class="spec-label">السعر ابتداءً من</div>
-            <div class="spec-value gold">40 جنيه</div>
+    <!-- ADD COMPANY TAB -->
+    <div class="admin-section" id="tab-add-company">
+      <div class="admin-card">
+        <div class="admin-card-title">إضافة / تعديل شركة</div>
+        <div class="admin-card-sub">أضف شركة شحن جديدة للموقع</div>
+        <input type="hidden" id="edit-id">
+        <div class="admin-form-grid">
+          <div><label class="admin-label">اسم الشركة (إنجليزي)</label><input class="admin-input" id="a-name" placeholder="Bosta"></div>
+          <div><label class="admin-label">اسم الشركة (عربي)</label><input class="admin-input" id="a-name-ar" placeholder="بوسطة"></div>
+          <div><label class="admin-label">اختصار اللوجو</label><input class="admin-input" id="a-logo" placeholder="B"></div>
+          <div><label class="admin-label">لون اللوجو</label><input class="admin-input" type="color" id="a-color" value="#F5A623"></div>
+          <div><label class="admin-label">وصف قصير</label><input class="admin-input" id="a-desc" placeholder="أسرع شركة شحن"></div>
+          <div><label class="admin-label">السعر ابتداءً من (جنيه)</label><input class="admin-input" type="number" id="a-price" placeholder="45"></div>
+          <div><label class="admin-label">وقت التوصيل</label><input class="admin-input" id="a-time" placeholder="24 ساعة"></div>
+          <div><label class="admin-label">التغطية</label><input class="admin-input" id="a-coverage" placeholder="27 محافظة"></div>
+          <div><label class="admin-label">التتبع</label><input class="admin-input" id="a-tracking" placeholder="فوري"></div>
+          <div><label class="admin-label">الباجة</label><input class="admin-input" id="a-badge" placeholder="الأسرع"></div>
+          <div>
+            <label class="admin-label">نوع الباجة</label>
+            <select class="admin-input" id="a-badge-type">
+              <option value="popular">popular (ذهبي)</option>
+              <option value="fast">fast (أزرق)</option>
+              <option value="cheap">cheap (أخضر)</option>
+              <option value="global">global (بنفسجي)</option>
+            </select>
           </div>
-          <div class="spec">
-            <div class="spec-label">وقت التوصيل</div>
-            <div class="spec-value green">24-48 ساعة</div>
+          <div style="display:flex;gap:20px;align-items:center;padding-top:10px;">
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:14px;">
+              <input type="checkbox" id="a-cod" checked> دفع عند الاستلام
+            </label>
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:14px;">
+              <input type="checkbox" id="a-intl"> شحن دولي
+            </label>
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:14px;">
+              <input type="checkbox" id="a-returns"> إرجاع
+            </label>
           </div>
-          <div class="spec">
-            <div class="spec-label">التغطية</div>
-            <div class="spec-value">27 محافظة</div>
+          <div class="admin-form-full">
+            <button class="form-submit" id="saveCompanyBtn" onclick="saveCompany()">💾 حفظ الشركة</button>
           </div>
-          <div class="spec">
-            <div class="spec-label">التتبع</div>
-            <div class="spec-value green">متاح</div>
-          </div>
-        </div>
-        <div class="features">
-          <span class="feature-tag yes">✓ دفع عند الاستلام</span>
-          <span class="feature-tag yes">✓ API للمتاجر</span>
-          <span class="feature-tag">داخلي فقط</span>
-        </div>
-        <a class="whatsapp-btn" href="https://wa.me/201044547874?text=عايز أعرف أكتر عن MylerZ مايلرز" target="_blank"
-          onclick="event.stopPropagation()">
-          <svg class="whatsapp-icon" viewBox="0 0 24 24">
-            <path
-              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
-            <path
-              d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.523 5.854L0 24l6.29-1.493A11.928 11.928 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.373l-.36-.213-3.733.886.939-3.63-.233-.374A9.818 9.818 0 1112 21.818z" />
-          </svg>
-          تواصل معانا عشان MylerZ
-        </a>
-      </div>
-    </div>
-
-    <!-- DHL -->
-    <div class="card" data-tags="global fast" onclick="toggleSelect(this, 'DHL Express')">
-      <div class="card-check">✓</div>
-      <div class="card-header">
-        <div class="company-logo" style="background:#FFCC00;color:#D40511;">DHL</div>
-        <div class="company-info">
-          <h3>DHL Express</h3>
-          <p>الأفضل للشحن الدولي</p>
-        </div>
-        <span class="badge badge-global">دولي</span>
-      </div>
-      <div class="card-body">
-        <div class="specs">
-          <div class="spec">
-            <div class="spec-label">السعر ابتداءً من</div>
-            <div class="spec-value gold">80 جنيه</div>
-          </div>
-          <div class="spec">
-            <div class="spec-label">وقت التوصيل</div>
-            <div class="spec-value green">24 ساعة</div>
-          </div>
-          <div class="spec">
-            <div class="spec-label">التغطية</div>
-            <div class="spec-value">220+ دولة</div>
-          </div>
-          <div class="spec">
-            <div class="spec-label">التتبع</div>
-            <div class="spec-value green">عالمي</div>
+          <div class="admin-form-full" id="editCancelWrap" style="display:none;">
+            <button class="action-btn" onclick="cancelEdit()">❌ إلغاء التعديل</button>
           </div>
         </div>
-        <div class="features">
-          <span class="feature-tag yes">✓ شحن دولي</span>
-          <span class="feature-tag yes">✓ سريع جداً</span>
-          <span class="feature-tag yes">✓ تأمين شامل</span>
-        </div>
-        <a class="whatsapp-btn" href="https://wa.me/201044547874?text=عايز أعرف أكتر عن DHL Express" target="_blank"
-          onclick="event.stopPropagation()">
-          <svg class="whatsapp-icon" viewBox="0 0 24 24">
-            <path
-              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
-            <path
-              d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.523 5.854L0 24l6.29-1.493A11.928 11.928 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.373l-.36-.213-3.733.886.939-3.63-.233-.374A9.818 9.818 0 1112 21.818z" />
-          </svg>
-          تواصل معانا عشان DHL
-        </a>
-      </div>
-    </div>
-
-    <!-- البريد المصري -->
-    <div class="card" data-tags="cheap cod global" onclick="toggleSelect(this, 'البريد المصري EMS')">
-      <div class="card-check">✓</div>
-      <div class="card-header">
-        <div class="company-logo" style="background:#1B5E20;color:#fff;">EMS</div>
-        <div class="company-info">
-          <h3>البريد المصري EMS</h3>
-          <p>الأوسع تغطية في مصر</p>
-        </div>
-        <span class="badge badge-cheap">اقتصادي</span>
-      </div>
-      <div class="card-body">
-        <div class="specs">
-          <div class="spec">
-            <div class="spec-label">السعر ابتداءً من</div>
-            <div class="spec-value gold">20 جنيه</div>
-          </div>
-          <div class="spec">
-            <div class="spec-label">وقت التوصيل</div>
-            <div class="spec-value" style="color:#F5A623;">2-5 أيام</div>
-          </div>
-          <div class="spec">
-            <div class="spec-label">التغطية</div>
-            <div class="spec-value">كل مصر</div>
-          </div>
-          <div class="spec">
-            <div class="spec-label">التتبع</div>
-            <div class="spec-value">محدود</div>
-          </div>
-        </div>
-        <div class="features">
-          <span class="feature-tag yes">✓ الأرخص</span>
-          <span class="feature-tag yes">✓ شحن دولي</span>
-          <span class="feature-tag">بطيء نسبياً</span>
-        </div>
-        <a class="whatsapp-btn" href="https://wa.me/201044547874?text=عايز أعرف أكتر عن البريد المصري EMS"
-          target="_blank" onclick="event.stopPropagation()">
-          <svg class="whatsapp-icon" viewBox="0 0 24 24">
-            <path
-              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.755-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
-            <path
-              d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.523 5.854L0 24l6.29-1.493A11.928 11.928 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.373l-.36-.213-3.733.886.939-3.63-.233-.374A9.818 9.818 0 1112 21.818z" />
-          </svg>
-          تواصل معانا عشان البريد المصري
-        </a>
-      </div>
-    </div>
-
-    <!-- SDX -->
-    <div class="card" data-tags="fast cod" onclick="toggleSelect(this, 'SDX إس دي إكس')">
-      <div class="card-check">✓</div>
-      <div class="card-header">
-        <div class="company-logo" style="background:#0052CC;color:#fff;">SDX</div>
-        <div class="company-info">
-          <h3>SDX إس دي إكس</h3>
-          <p>متخصص في القاهرة الكبرى</p>
-        </div>
-        <span class="badge badge-fast">سريع</span>
-      </div>
-      <div class="card-body">
-        <div class="specs">
-          <div class="spec">
-            <div class="spec-label">السعر ابتداءً من</div>
-            <div class="spec-value gold">25 جنيه</div>
-          </div>
-          <div class="spec">
-            <div class="spec-label">وقت التوصيل</div>
-            <div class="spec-value green">نفس اليوم</div>
-          </div>
-          <div class="spec">
-            <div class="spec-label">التغطية</div>
-            <div class="spec-value">القاهرة + الجيزة</div>
-          </div>
-          <div class="spec">
-            <div class="spec-label">التتبع</div>
-            <div class="spec-value green">لحظي</div>
-          </div>
-        </div>
-        <div class="features">
-          <span class="feature-tag yes">✓ دفع عند الاستلام</span>
-          <span class="feature-tag yes">✓ نفس اليوم</span>
-          <span class="feature-tag">القاهرة فقط</span>
-        </div>
-        <a class="whatsapp-btn" href="https://wa.me/201044547874?text=عايز أعرف أكتر عن SDX إس دي إكس" target="_blank"
-          onclick="event.stopPropagation()">
-          <svg class="whatsapp-icon" viewBox="0 0 24 24">
-            <path
-              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
-            <path
-              d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.523 5.854L0 24l6.29-1.493A11.928 11.928 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.373l-.36-.213-3.733.886.939-3.63-.233-.374A9.818 9.818 0 1112 21.818z" />
-          </svg>
-          تواصل معانا عشان SDX
-        </a>
-      </div>
-    </div>
-
-    <!-- Middle East Couriers -->
-    <div class="card" data-tags="cod cheap" onclick="toggleSelect(this, 'Middle East Couriers')">
-      <div class="card-check">✓</div>
-      <div class="card-header">
-        <div class="company-logo" style="background:#F57C00;color:#fff;">ME</div>
-        <div class="company-info">
-          <h3>Middle East Couriers</h3>
-          <p>خبرة أكتر من 20 سنة</p>
-        </div>
-        <span class="badge badge-cheap">اقتصادي</span>
-      </div>
-      <div class="card-body">
-        <div class="specs">
-          <div class="spec">
-            <div class="spec-label">السعر ابتداءً من</div>
-            <div class="spec-value gold">23 جنيه</div>
-          </div>
-          <div class="spec">
-            <div class="spec-label">وقت التوصيل</div>
-            <div class="spec-value green">48 ساعة</div>
-          </div>
-          <div class="spec">
-            <div class="spec-label">التغطية</div>
-            <div class="spec-value">معظم المحافظات</div>
-          </div>
-          <div class="spec">
-            <div class="spec-label">التتبع</div>
-            <div class="spec-value">متاح</div>
-          </div>
-        </div>
-        <div class="features">
-          <span class="feature-tag yes">✓ دفع عند الاستلام</span>
-          <span class="feature-tag yes">✓ تغليف وتخزين</span>
-          <span class="feature-tag">محلي فقط</span>
-        </div>
-        <a class="whatsapp-btn" href="https://wa.me/201044547874?text=عايز أعرف أكتر عن Middle East Couriers"
-          target="_blank" onclick="event.stopPropagation()">
-          <svg class="whatsapp-icon" viewBox="0 0 24 24">
-            <path
-              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
-            <path
-              d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.523 5.854L0 24l6.29-1.493A11.928 11.928 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.373l-.36-.213-3.733.886.939-3.63-.233-.374A9.818 9.818 0 1112 21.818z" />
-          </svg>
-          تواصل معانا عشان Middle East
-        </a>
       </div>
     </div>
 
   </div>
+</div>
 
-  <!-- COMPARE MODAL -->
-  <div class="modal-overlay" id="compareModal" onclick="if(event.target===this)closeModal()">
-    <div class="modal">
-      <div class="modal-header">
-        <div class="modal-title">⚡ مقارنة الشركات</div>
-        <button class="modal-close" onclick="closeModal()">✕</button>
-      </div>
-      <div style="overflow-x:auto;">
-        <table class="compare-table" id="compareTable"></table>
-      </div>
-    </div>
-  </div>
+<!-- ===== FOOTER ===== -->
+<footer>
+  صفحة مقارنة شركات الشحن — للتواصل والاستفسار <span>واتساب: 01044547874</span>
+</footer>
 
-  <footer>
-    صفحة مقارنة شركات الشحن — للتواصل والاستفسار <span>واتساب: 01044547874</span>
-  </footer>
+<script>
+  // ===== SUPABASE CONFIG =====
+  const SUPA_URL = 'https://hfykpirbysgzdzwxdtvd.supabase.co';
+  const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhmeWtwaXJieXNnemR6d3hkdHZkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA5NjYyMjIsImV4cCI6MjA5NjU0MjIyMn0.B70VielwJJ3MSjMWZQgLBvo0p2gWaXDMM1bz6IjJyGs';
 
-  <script>
-    const selected = new Map();
-
-    function toggleSelect(card, name) {
-      if (event.target.closest('.whatsapp-btn')) return;
-      if (selected.has(name)) {
-        selected.delete(name);
-        card.classList.remove('selected');
-      } else {
-        if (selected.size >= 3) {
-          alert('ممكن تقارن بين 3 شركات بس في نفس الوقت');
-          return;
-        }
-        selected.set(name, card);
-        card.classList.add('selected');
+  // Simple Supabase client using fetch directly - no library needed
+  const sb = {
+    from: (table) => ({
+      select: (cols='*') => ({
+        eq: (col, val) => ({
+          order: (col2, opts={}) => sbFetch('GET', table, {select: cols, [col]: `eq.${val}`, order: `${col2}.${opts.ascending===false?'desc':'asc'}`}),
+          single: () => sbFetch('GET', table, {select: cols, [col]: `eq.${val}`}, true),
+        }),
+        order: (col2, opts={}) => sbFetch('GET', table, {select: cols, order: `${col2}.${opts.ascending===false?'desc':'asc'}`}),
+        single: () => sbFetch('GET', table, {select: cols}, true),
+      }),
+      insert: (body) => sbMutate('POST', table, body),
+      update: (body) => ({
+        eq: (col, val) => sbMutate('PATCH', table, body, {[col]: `eq.${val}`}),
+      }),
+      delete: () => ({
+        eq: (col, val) => sbMutate('DELETE', table, null, {[col]: `eq.${val}`}),
+      }),
+    }),
+    auth: {
+      signInWithPassword: async ({email, password}) => {
+        try {
+          const r = await fetch(`${SUPA_URL}/auth/v1/token?grant_type=password`, {
+            method: 'POST',
+            headers: {'Content-Type':'application/json','apikey': SUPA_KEY},
+            body: JSON.stringify({email, password})
+          });
+          const d = await r.json();
+          if (d.error || d.error_description) return {data: null, error: d};
+          currentSession = d;
+          return {data: {user: d.user, session: d}, error: null};
+        } catch(e) { return {data: null, error: e}; }
+      },
+      signOut: async () => {
+        currentSession = null;
+        return {error: null};
+      },
+      getSession: async () => {
+        return {data: {session: currentSession}};
       }
-      updateBar();
     }
+  };
 
-    function updateBar() {
-      const bar = document.getElementById('compareBar');
-      const names = document.getElementById('compareNames');
-      if (selected.size > 0) {
-        bar.classList.add('show');
-        names.textContent = [...selected.keys()].join(' vs ');
-      } else {
-        bar.classList.remove('show');
-      }
+  let currentSession = null;
+
+  async function sbFetch(method, table, params={}, single=false) {
+    try {
+      const headers = {'apikey': SUPA_KEY, 'Authorization': `Bearer ${currentSession?.access_token || SUPA_KEY}`, 'Content-Type': 'application/json'};
+      if (single) headers['Accept'] = 'application/vnd.pgrst.object+json';
+      const qs = Object.entries(params).map(([k,v]) => k === 'select' ? `select=${v}` : k === 'order' ? `order=${v}` : `${k}=${v}`).join('&');
+      const r = await fetch(`${SUPA_URL}/rest/v1/${table}?${qs}`, {method, headers});
+      const d = await r.json();
+      if (!r.ok) return {data: null, error: d};
+      return {data: d, error: null};
+    } catch(e) { return {data: null, error: e}; }
+  }
+
+  async function sbMutate(method, table, body, params={}) {
+    try {
+      const headers = {'apikey': SUPA_KEY, 'Authorization': `Bearer ${currentSession?.access_token || SUPA_KEY}`, 'Content-Type': 'application/json', 'Prefer': 'return=minimal'};
+      const qs = Object.entries(params).map(([k,v]) => `${k}=${v}`).join('&');
+      const url = `${SUPA_URL}/rest/v1/${table}${qs ? '?'+qs : ''}`;
+      const r = await fetch(url, {method, headers, body: body ? JSON.stringify(body) : undefined});
+      if (!r.ok) { const d = await r.json().catch(()=>{}); return {data: null, error: d}; }
+      return {data: null, error: null};
+    } catch(e) { return {data: null, error: e}; }
+  }
+
+  // ===== STATE =====
+  const selected = new Map();
+  let allCompanies = [];
+  let currentUser = null;
+
+  // ===== INIT =====
+  document.addEventListener('DOMContentLoaded', () => {
+    loadCompanies();
+  });
+
+  // ===== SCROLL HELPER =====
+  function scrollTo(id) {
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // ===== LOAD COMPANIES =====
+  async function loadCompanies() {
+    const { data, error } = await sb.from('shipping_companies').select('*').eq('is_active', true).order('price_from');
+    if (error) { console.error(error); return; }
+    allCompanies = data;
+    document.getElementById('stat-companies').textContent = data.length;
+    renderCompanies(data);
+    populateCompanySelect(data);
+  }
+
+  function populateCompanySelect(companies) {
+    const sel = document.getElementById('f-company');
+    companies.forEach(c => {
+      const opt = document.createElement('option');
+      opt.value = c.name;
+      opt.textContent = c.name_ar + ' - ' + c.name;
+      sel.appendChild(opt);
+    });
+  }
+
+  function renderCompanies(companies) {
+    const grid = document.getElementById('grid');
+    if (!companies.length) {
+      grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px;color:var(--muted);">مفيش شركات متاحة دلوقتي</div>';
+      return;
     }
+    grid.innerHTML = companies.map(c => buildCard(c)).join('');
+  }
 
-    function clearCompare() {
-      selected.forEach((card) => card.classList.remove('selected'));
-      selected.clear();
-      updateBar();
+  function buildCard(c) {
+    const tags = [
+      c.cod ? 'cod' : '',
+      c.price_from <= 30 ? 'cheap' : '',
+      (c.delivery_time && (c.delivery_time.includes('24') || c.delivery_time.includes('نفس'))) ? 'fast' : '',
+      c.international ? 'global' : ''
+    ].filter(Boolean).join(' ');
+
+    const badgeClass = `badge-${c.badge_type || 'popular'}`;
+    const whatsappText = encodeURIComponent(c.whatsapp_text || `عايز أعرف أكتر عن ${c.name}`);
+
+    return `
+    <div class="card" data-tags="${tags}" data-id="${c.id}" onclick="toggleSelect(this,'${c.name_ar || c.name}')">
+      <div class="card-check">✓</div>
+      <div class="card-header">
+        <div class="company-logo" style="background:${c.logo_color};color:#fff;">${c.logo_text}</div>
+        <div class="company-info">
+          <h3>${c.name_ar || c.name}</h3>
+          <p>${c.description || ''}</p>
+        </div>
+        ${c.badge ? `<span class="badge ${badgeClass}">${c.badge}</span>` : ''}
+      </div>
+      <div class="card-body">
+        <div class="specs">
+          <div class="spec"><div class="spec-label">السعر ابتداءً من</div><div class="spec-value gold">${c.price_from} جنيه</div></div>
+          <div class="spec"><div class="spec-label">وقت التوصيل</div><div class="spec-value green">${c.delivery_time || '-'}</div></div>
+          <div class="spec"><div class="spec-label">التغطية</div><div class="spec-value">${c.coverage || '-'}</div></div>
+          <div class="spec"><div class="spec-label">التتبع</div><div class="spec-value green">${c.tracking || '-'}</div></div>
+        </div>
+        <div class="features">
+          ${c.cod ? '<span class="feature-tag yes">✓ دفع عند الاستلام</span>' : ''}
+          ${c.international ? '<span class="feature-tag yes">✓ شحن دولي</span>' : ''}
+          ${c.returns ? '<span class="feature-tag yes">✓ إرجاع</span>' : ''}
+        </div>
+        <a class="whatsapp-btn" href="https://wa.me/201044547874?text=${whatsappText}" target="_blank" onclick="event.stopPropagation()">
+          <svg class="whatsapp-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.523 5.854L0 24l6.29-1.493A11.928 11.928 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.373l-.36-.213-3.733.886.939-3.63-.233-.374A9.818 9.818 0 1112 21.818z"/></svg>
+          تواصل معانا
+        </a>
+      </div>
+    </div>`;
+  }
+
+  // ===== FILTER =====
+  function filterCards(tag, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.card').forEach(card => {
+      card.style.display = (tag === 'all' || card.dataset.tags.includes(tag)) ? '' : 'none';
+    });
+  }
+
+  // ===== COMPARE =====
+  function toggleSelect(card, name) {
+    if (event.target.closest('.whatsapp-btn')) return;
+    if (selected.has(name)) {
+      selected.delete(name);
+      card.classList.remove('selected');
+    } else {
+      if (selected.size >= 3) { alert('ممكن تقارن بين 3 شركات بس في نفس الوقت'); return; }
+      selected.set(name, card);
+      card.classList.add('selected');
     }
+    updateBar();
+  }
 
-    function showCompare() {
-      if (selected.size < 2) { alert('اختار شركتين على الأقل للمقارنة'); return; }
+  function updateBar() {
+    const bar = document.getElementById('compareBar');
+    const names = document.getElementById('compareNames');
+    if (selected.size > 0) {
+      bar.classList.add('show');
+      names.textContent = [...selected.keys()].join(' vs ');
+    } else {
+      bar.classList.remove('show');
+    }
+  }
 
-      const data = {
-        'Bosta بوسطة': { price: '45 جنيه', speed: '24 ساعة', coverage: '27 محافظة', cod: '✓', global: '✗', tracking: 'فوري', returns: '✓' },
-        'J&T Express': { price: '35 جنيه', speed: '48-72 ساعة', coverage: '25 محافظة', cod: '✓', global: '✗', tracking: 'متاح', returns: '✗' },
-        'Aramex أرامكس': { price: '60 جنيه', speed: '24-48 ساعة', coverage: 'دولي + محلي', cod: '✓', global: '✓', tracking: 'متطور', returns: '✓' },
-        'MylerZ مايلرز': { price: '40 جنيه', speed: '24-48 ساعة', coverage: '27 محافظة', cod: '✓', global: '✗', tracking: 'متاح', returns: '✓' },
-        'DHL Express': { price: '80 جنيه', speed: '24 ساعة', coverage: '220+ دولة', cod: '✗', global: '✓', tracking: 'عالمي', returns: '✓' },
-        'البريد المصري EMS': { price: '20 جنيه', speed: '2-5 أيام', coverage: 'كل مصر', cod: '✗', global: '✓', tracking: 'محدود', returns: '✗' },
-        'SDX إس دي إكس': { price: '25 جنيه', speed: 'نفس اليوم', coverage: 'القاهرة', cod: '✓', global: '✗', tracking: 'لحظي', returns: '✓' },
-        'Middle East Couriers': { price: '23 جنيه', speed: '48 ساعة', coverage: 'معظم المحافظات', cod: '✓', global: '✗', tracking: 'متاح', returns: '✗' },
-      };
+  function clearCompare() {
+    selected.forEach(card => card.classList.remove('selected'));
+    selected.clear();
+    updateBar();
+  }
 
-      const rows = [
-        ['السعر ابتداءً من', 'price'],
-        ['سرعة التوصيل', 'speed'],
-        ['التغطية', 'coverage'],
-        ['دفع عند الاستلام', 'cod'],
-        ['شحن دولي', 'global'],
-        ['تتبع الشحنة', 'tracking'],
-        ['إرجاع', 'returns'],
-      ];
-
-      const names = [...selected.keys()];
-      let html = '<tr><th>المقارنة</th>' + names.map(n => `<th>${n}</th>`).join('') + '</tr>';
-      rows.forEach(([label, key]) => {
-        html += `<tr><td>${label}</td>`;
-        names.forEach(n => {
-          const v = data[n] ? data[n][key] : '-';
-          const cls = v === '✓' ? 'tick' : v === '✗' ? 'cross' : '';
-          html += `<td class="${cls}">${v}</td>`;
-        });
-        html += '</tr>';
+  function showCompare() {
+    if (selected.size < 2) { alert('اختار شركتين على الأقل للمقارنة'); return; }
+    const names = [...selected.keys()];
+    const rows = [
+      ['السعر ابتداءً من', 'price_from', v => v + ' جنيه'],
+      ['سرعة التوصيل', 'delivery_time', v => v],
+      ['التغطية', 'coverage', v => v],
+      ['دفع عند الاستلام', 'cod', v => v ? '✓' : '✗'],
+      ['شحن دولي', 'international', v => v ? '✓' : '✗'],
+      ['تتبع الشحنة', 'tracking', v => v],
+      ['إرجاع', 'returns', v => v ? '✓' : '✗'],
+    ];
+    const companies = names.map(n => allCompanies.find(c => (c.name_ar || c.name) === n) || {});
+    let html = '<tr><th>المقارنة</th>' + names.map(n => `<th>${n}</th>`).join('') + '</tr>';
+    rows.forEach(([label, key, fmt]) => {
+      html += `<tr><td>${label}</td>`;
+      companies.forEach(c => {
+        const v = fmt(c[key]);
+        const cls = v === '✓' ? 'tick' : v === '✗' ? 'cross' : '';
+        html += `<td class="${cls}">${v}</td>`;
       });
-      html += `<tr><td>تواصل معانا</td>` + names.map(n =>
-        `<td><a class="whatsapp-btn" href="https://wa.me/201044547874?text=عايز أعرف أكتر عن ${n}" target="_blank" style="padding:8px 12px;font-size:13px;">واتساب</a></td>`
-      ).join('') + '</tr>';
+      html += '</tr>';
+    });
+    html += '<tr><td>تواصل معانا</td>' + names.map(n =>
+      `<td><a class="whatsapp-btn" href="https://wa.me/201044547874?text=${encodeURIComponent('عايز أعرف أكتر عن ' + n)}" target="_blank" style="padding:8px 12px;font-size:13px;">واتساب</a></td>`
+    ).join('') + '</tr>';
+    document.getElementById('compareTable').innerHTML = html;
+    document.getElementById('compareModal').classList.add('show');
+  }
 
-      document.getElementById('compareTable').innerHTML = html;
-      document.getElementById('compareModal').classList.add('show');
+  function closeModal(id) { document.getElementById(id).classList.remove('show'); }
+
+  // ===== ORDER FORM =====
+  async function submitOrder() {
+    const name = document.getElementById('f-name').value.trim();
+    const phone = document.getElementById('f-phone').value.trim();
+    const gov = document.getElementById('f-gov').value;
+    const product = document.getElementById('f-product').value.trim();
+    if (!name || !phone || !gov || !product) { alert('من فضلك املا الحقول المطلوبة (*)'); return; }
+
+    const btn = document.querySelector('.form-submit');
+    btn.disabled = true;
+    btn.textContent = '⏳ بيتبعت...';
+
+    const { error } = await sb.from('orders').insert({
+      customer_name: name,
+      customer_phone: phone,
+      governorate: gov,
+      customer_address: document.getElementById('f-address').value.trim(),
+      product_description: product,
+      weight: parseFloat(document.getElementById('f-weight').value) || null,
+      preferred_company: document.getElementById('f-company').value || null,
+      notes: document.getElementById('f-notes').value.trim() || null,
+    });
+
+    if (error) {
+      alert('حصل خطأ، حاول تاني');
+      btn.disabled = false;
+      btn.textContent = '📦 ابعت الطلب';
+      return;
     }
 
-    function closeModal() {
-      document.getElementById('compareModal').classList.remove('show');
+    document.getElementById('successPhone').textContent = phone;
+    document.getElementById('orderForm').style.display = 'none';
+    document.getElementById('orderSuccess').classList.add('show');
+  }
+
+  // ===== ADMIN AUTH =====
+  function openAdminLogin() {
+    if (currentUser) { openAdminPanel(); return; }
+    document.getElementById('adminLoginModal').classList.add('show');
+  }
+
+  async function adminLogin() {
+    const email = document.getElementById('adminEmail').value.trim();
+    const pass = document.getElementById('adminPassword').value;
+    const errEl = document.getElementById('loginError');
+    errEl.classList.remove('show');
+
+    const { data, error } = await sb.auth.signInWithPassword({ email, password: pass });
+    if (error) { errEl.classList.add('show'); return; }
+
+    currentUser = data.user;
+    closeModal('adminLoginModal');
+    openAdminPanel();
+  }
+
+  async function adminLogout() {
+    await sb.auth.signOut();
+    currentUser = null;
+    document.getElementById('adminPanel').classList.remove('show');
+  }
+
+  async function checkAdminSession() {
+    const { data } = await sb.auth.getSession();
+    if (data.session) { currentUser = data.session.user; }
+  }
+
+  function openAdminPanel() {
+    document.getElementById('adminPanel').classList.add('show');
+    document.getElementById('adminUserEmail').textContent = currentUser?.email || '';
+    loadAdminOrders();
+    loadAdminCompanies();
+  }
+
+  // ===== ADMIN TABS =====
+  function switchTab(tabId) {
+    document.querySelectorAll('.admin-section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(tabId).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  // ===== ADMIN ORDERS =====
+  async function loadAdminOrders() {
+    const { data, error } = await sb.from('orders').select('*').order('created_at', { ascending: false });
+    if (error) return;
+    const total = data.length;
+    const newOrders = data.filter(o => o.status === 'new').length;
+    const done = data.filter(o => o.status === 'done').length;
+    document.getElementById('statTotal').textContent = total;
+    document.getElementById('statNew').textContent = newOrders;
+    document.getElementById('statDone').textContent = done;
+
+    const tbody = document.getElementById('ordersBody');
+    tbody.innerHTML = data.map(o => `
+      <tr>
+        <td>${o.customer_name}</td>
+        <td><a href="tel:${o.customer_phone}" style="color:var(--gold);">${o.customer_phone}</a></td>
+        <td>${o.governorate || '-'}</td>
+        <td>${o.preferred_company || 'أي شركة'}</td>
+        <td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${o.product_description}</td>
+        <td style="color:var(--muted);font-size:12px;">${new Date(o.created_at).toLocaleDateString('ar-EG')}</td>
+        <td><span class="status-badge status-${o.status === 'new' ? 'new' : o.status === 'done' ? 'done' : 'cancelled'}">${o.status === 'new' ? 'جديد' : o.status === 'done' ? 'تم' : 'ملغي'}</span></td>
+        <td>
+          ${o.status === 'new' ? `<button class="action-btn success" onclick="updateOrderStatus('${o.id}','done')">✓ تم</button>` : ''}
+          <button class="action-btn danger" onclick="updateOrderStatus('${o.id}','cancelled')">حذف</button>
+          <a class="action-btn" href="https://wa.me/${o.customer_phone}" target="_blank">واتساب</a>
+        </td>
+      </tr>`).join('');
+  }
+
+  async function updateOrderStatus(id, status) {
+    await sb.from('orders').update({ status }).eq('id', id);
+    loadAdminOrders();
+  }
+
+  // ===== ADMIN COMPANIES =====
+  async function loadAdminCompanies() {
+    const { data } = await sb.from('shipping_companies').select('*').order('price_from');
+    const tbody = document.getElementById('companiesBody');
+    tbody.innerHTML = data.map(c => `
+      <tr>
+        <td style="display:flex;align-items:center;gap:10px;">
+          <div class="company-logo-sm" style="background:${c.logo_color};color:#fff;">${c.logo_text}</div>
+          <div><div style="font-weight:700;">${c.name_ar}</div><div style="font-size:12px;color:var(--muted);">${c.name}</div></div>
+        </td>
+        <td style="color:var(--gold);font-weight:700;">${c.price_from} جنيه</td>
+        <td>${c.delivery_time}</td>
+        <td>${c.coverage}</td>
+        <td><span class="status-badge status-${c.is_active ? 'active' : 'inactive'}">${c.is_active ? 'نشط' : 'مخفي'}</span></td>
+        <td>
+          <button class="action-btn" onclick="editCompany('${c.id}')">✏️ تعديل</button>
+          <button class="action-btn" onclick="toggleCompanyStatus('${c.id}',${c.is_active})">${c.is_active ? '🙈 إخفاء' : '👁️ إظهار'}</button>
+          <button class="action-btn danger" onclick="deleteCompany('${c.id}')">🗑️ حذف</button>
+        </td>
+      </tr>`).join('');
+  }
+
+  async function toggleCompanyStatus(id, current) {
+    await sb.from('shipping_companies').update({ is_active: !current }).eq('id', id);
+    loadAdminCompanies();
+    loadCompanies();
+  }
+
+  async function deleteCompany(id) {
+    if (!confirm('متأكد إنك عايز تحذف الشركة دي؟')) return;
+    await sb.from('shipping_companies').delete().eq('id', id);
+    loadAdminCompanies();
+    loadCompanies();
+  }
+
+  function editCompany(id) {
+    const c = allCompanies.find(x => x.id === id) ||
+      JSON.parse(document.querySelector(`[onclick="editCompany('${id}')"]`)?.closest('tr')?.dataset?.company || 'null');
+    sb.from('shipping_companies').select('*').eq('id', id).single().then(({ data: c }) => {
+      if (!c) return;
+      document.getElementById('edit-id').value = c.id;
+      document.getElementById('a-name').value = c.name;
+      document.getElementById('a-name-ar').value = c.name_ar;
+      document.getElementById('a-logo').value = c.logo_text;
+      document.getElementById('a-color').value = c.logo_color;
+      document.getElementById('a-desc').value = c.description || '';
+      document.getElementById('a-price').value = c.price_from;
+      document.getElementById('a-time').value = c.delivery_time;
+      document.getElementById('a-coverage').value = c.coverage;
+      document.getElementById('a-tracking').value = c.tracking;
+      document.getElementById('a-badge').value = c.badge || '';
+      document.getElementById('a-badge-type').value = c.badge_type || 'popular';
+      document.getElementById('a-cod').checked = c.cod;
+      document.getElementById('a-intl').checked = c.international;
+      document.getElementById('a-returns').checked = c.returns;
+      document.getElementById('saveCompanyBtn').textContent = '💾 حفظ التعديلات';
+      document.getElementById('editCancelWrap').style.display = 'block';
+      switchTab('tab-add-company');
+      document.querySelectorAll('.admin-tab')[2].classList.add('active');
+    });
+  }
+
+  function cancelEdit() {
+    document.getElementById('edit-id').value = '';
+    document.getElementById('saveCompanyBtn').textContent = '💾 حفظ الشركة';
+    document.getElementById('editCancelWrap').style.display = 'none';
+    ['a-name','a-name-ar','a-logo','a-desc','a-price','a-time','a-coverage','a-tracking','a-badge'].forEach(id => document.getElementById(id).value = '');
+  }
+
+  async function saveCompany() {
+    const editId = document.getElementById('edit-id').value;
+    const payload = {
+      name: document.getElementById('a-name').value.trim(),
+      name_ar: document.getElementById('a-name-ar').value.trim(),
+      logo_text: document.getElementById('a-logo').value.trim(),
+      logo_color: document.getElementById('a-color').value,
+      description: document.getElementById('a-desc').value.trim(),
+      price_from: parseFloat(document.getElementById('a-price').value) || 0,
+      delivery_time: document.getElementById('a-time').value.trim(),
+      coverage: document.getElementById('a-coverage').value.trim(),
+      tracking: document.getElementById('a-tracking').value.trim(),
+      badge: document.getElementById('a-badge').value.trim(),
+      badge_type: document.getElementById('a-badge-type').value,
+      cod: document.getElementById('a-cod').checked,
+      international: document.getElementById('a-intl').checked,
+      returns: document.getElementById('a-returns').checked,
+    };
+    if (!payload.name || !payload.name_ar) { alert('لازم تكتب اسم الشركة'); return; }
+
+    if (editId) {
+      await sb.from('shipping_companies').update(payload).eq('id', editId);
+    } else {
+      await sb.from('shipping_companies').insert({ ...payload, is_active: true });
     }
 
-    function filterCards(tag, btn) {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      document.querySelectorAll('.card').forEach(card => {
-        if (tag === 'all' || card.dataset.tags.includes(tag)) {
-          card.style.display = '';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    }
-  </script>
+    cancelEdit();
+    loadAdminCompanies();
+    loadCompanies();
+    alert(editId ? '✅ تم تعديل الشركة!' : '✅ تم إضافة الشركة!');
+  }
+</script>
 
 </body>
-
 </html>
