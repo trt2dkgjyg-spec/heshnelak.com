@@ -391,8 +391,16 @@
     <button class="nav-link active" onclick="scrollTo('#companies')">شركات الشحن</button>
     <button class="nav-link" onclick="scrollTo('#order')">اطلب شحنة</button>
   </div>
-  <button class="nav-admin-btn" onclick="openAdminLogin()">⚙️ أدمن</button>
+  <button class="nav-admin-btn" onclick="openAdminLogin()" style="display:none;">⚙️ أدمن</button>
 </nav>
+<script>
+  // Secret admin access: press Ctrl + Shift + A
+  document.addEventListener('keydown', function(e) {
+    if (e.ctrlKey && e.shiftKey && e.key === 'A') {
+      openAdminLogin();
+    }
+  });
+</script>
 
 <!-- ===== HERO ===== -->
 <div class="hero" id="home">
